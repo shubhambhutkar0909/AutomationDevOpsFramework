@@ -131,7 +131,7 @@ Hybrid-Test-Automation-Framework
 📥 Installation
 
     1️⃣ Clone the repository:
-    git clone https://github.com/shubhambhutkar0909/AutomationDevOpsFramework.git
+    git clone https://github.com/shubhambhutkar0909/Automation_DevOps_Framework.git
 
     2️⃣ Running Test with Docker Compose:
     docker-compose up -d  
