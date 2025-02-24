@@ -1,0 +1,36 @@
+name: Test Automation Workflow
+
+on:
+  schedule:
+  - cron: 30 18 * * *
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 11
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Running Test Automation Framework with Maven
+      run: mvn clean test 
+
+    - name: Upload a Test Logs
+      if: always()
+      uses: actions/upload-artifact@v4.6.0
+      with:
+       name: Test Automation Logs
+       path: logs/
+
+    - name: Test Execution Status
+      run: echo "Test Execution is Completed"
